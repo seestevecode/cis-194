@@ -35,3 +35,20 @@ sumDigits = sum . concatMap toDigits
 validate :: Integer -> Bool
 validate n = check `mod` 10 == 0
     where check = sumDigits $ doubleEveryOther $ toDigits n
+
+
+-- Tower of Hanoi
+
+type Peg = String
+type Move = (Peg, Peg)
+
+-- move n discs from start to finish pegs, with a third temp peg
+-- e.g. hanoi 2 "a" "b" "c" == [("a","c"), ("a","b"), ("c","b")]
+
+hanoi :: Integer -> Peg -> Peg -> Peg -> [Move]
+hanoi n start finish temp
+    | n == 0 = []
+    | n == 1 = [(start,finish)]
+    | otherwise = hanoi (n-1) start temp finish
+                  ++ [(start,finish)] 
+                  ++ hanoi (n-1) temp finish start
