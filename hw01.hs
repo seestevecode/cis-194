@@ -13,12 +13,14 @@ toDigits n
 
 -- reverse the digits of a number
 -- e.g. toDigitsRev 1234 == [4,3,2,1]
+-- Q. I don't understand why this is needed, as I haven't used it below
 toDigitsRev :: Integer -> [Integer]
 toDigitsRev = reverse . toDigits
 
 -- double every other digit from the right
 -- e.g. doubleEveryOther [8,7,6,5] = [16,7,12,5]
 -- e.g. doubleEveryOther [1,2,3] = [1,4,3]
+-- Q. this doesn't seem the most efficient way of doing it
 doubleEveryOther :: [Integer] -> [Integer]
 doubleEveryOther ls
     | length ls `mod` 2 == 0 = zipWith (*) (cycle [2,1]) ls
