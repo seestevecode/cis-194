@@ -44,7 +44,6 @@ type Move = (Peg, Peg)
 
 -- move n discs from start to finish pegs, with a third temp peg
 -- e.g. hanoi 2 "a" "b" "c" == [("a","c"), ("a","b"), ("c","b")]
-
 hanoi :: Integer -> Peg -> Peg -> Peg -> [Move]
 hanoi n start finish temp
     | n == 0 = []
